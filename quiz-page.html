@@ -1,33 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="assets/style/style.css">
+	<script src="assets/javascript/game.js"></script>
 	<title></title>
 </head>
 <body>
 
-<h1>Header</h1>
 
-<h3>Who fell into a cryogenic chamber and woke up 1000 years in the future?</h3>
-	<label for="fry1">Fry</label>	
-	<input type="radio" name="question1" id="fry1" value="rightAnswer">
-
-	<!-- IDs are assigned with this syntax:
-		labelInputquestionNumber
-	 -->
-
-	<label for="leela1">Leela</label>
-	<input type="radio" name="question1" id="leela1" value="wrongAnswer">
+	<header class="quiz-header">
+		<h1 class="title">Header</h1>
+	</header>
 	
+	<form class="border" id="myForm">
+		<h3 class="question" id="question1"> Who fell into a cryogenic chamber and woke up 1000 years in the future?</h3>
+
+
+		<div class="answers">
+			<label for="fry1">Fry</label>	
+			<input type="radio" name="question1" class="answers" id="fry1" value="rightAnswer">
+
+			<!-- IDs are assigned with this syntax:
+				labelInputquestionNumber
+			 -->
+
+			<label for="leela1">Leela</label>
+			<input type="radio" name="question1" class="answers" id="leela1" value="wrongAnswer">
+			
+			
+			<label for="zoidberg1">Why not, Zoidberg?</label>
+			<input type="radio" name="question1" class="answers" id="zoidberg1" value="wrongAnswer">
+		</div>		
+	</form>
 	
-	<label for="zoidberg1">Why not, Zoidberg?</label>
-	<input type="radio" name="question1" id="zoidberg1" value="wrongAnswer">
 
 
 
-	<!-- REMOVE: simple block to separate button for testing -->
-	<br><br><br>
+		<!-- REMOVE: simple block to separate button for testing -->
+		<br><br><br>
 
-	<button class="" id="submitAnswers" onclick="window.location.href='results-page.html'">Shut up, and take my answers!</button>
+	<div class="btn">
+		<button class="btn" id="done" onclick="getScore(); window.location.href='results-page.html'">Shut up, and take my answers!</button>
+	</div>
+		
 
 </body>
 </html>
