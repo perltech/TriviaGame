@@ -69,3 +69,17 @@ body {
 .results-section {
 	text-align: center;
 }
+
+.hidden-button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+#start-game img {
+	height: 200px;
+	width: 275px;
+}

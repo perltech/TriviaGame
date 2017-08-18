@@ -11,6 +11,7 @@ var skipped = 0;
 
 function correct() {
   rightAnswers++;
+  localStorage.setItem("answer-right", rightAnswers);
   // $("#right-answers").text(rightAnswers);
 }
 
@@ -31,11 +32,13 @@ function getScore() {
     // if ($("label[input[type=radio]]").val("rightAnswer")
     if ($("input[type=radio]:checked", "#myForm").val() === "rightAnswer") { //this makes sense, I think
       correct();
-      localStorage.setItem("answer-right", rightAnswers);
+      // localStorage.setItem("answer-right", rightAnswers);
       console.log(rightAnswers + "right");
     }
     else if ($("input[type=radio]:checked", "#myForm").val() === "wrongAnswer") {
       wrong();
+      // Wrong answers need to be divided by number of extra wrong answers per loop, probably 2 or 3
+      // Can this be accomplished as an algorithm using %?
       console.log(wrongAnswers + "wrong");
     }
     else {
@@ -48,11 +51,8 @@ function getScore() {
 
 
 $("#done").click(function() {
-  getScore();
-  
+  getScore();  
   window.location.href='results-page.html';
-  
-  // document.getElementById("right-answers").innerHTML = localStorage.getItem(rightAnswers);
   //Clear Interval
 });
 
