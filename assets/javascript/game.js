@@ -11,7 +11,7 @@ var skipped = 0;
 
 function correct() {
   rightAnswers++;
-  $("#right-answers").text(rightAnswers);
+  // $("#right-answers").text(rightAnswers);
 }
 
 function wrong() {
@@ -31,6 +31,7 @@ function getScore() {
     // if ($("label[input[type=radio]]").val("rightAnswer")
     if ($("input[type=radio]:checked", "#myForm").val() === "rightAnswer") { //this makes sense, I think
       correct();
+      localStorage.setItem("answer-right", rightAnswers);
       console.log(rightAnswers + "right");
     }
     else if ($("input[type=radio]:checked", "#myForm").val() === "wrongAnswer") {
@@ -48,10 +49,16 @@ function getScore() {
 
 $("#done").click(function() {
   getScore();
-  localStorage.setItem(rightAnswers, wrongAnswers, notAnswered);
+  
   window.location.href='results-page.html';
+  
+  // document.getElementById("right-answers").innerHTML = localStorage.getItem(rightAnswers);
   //Clear Interval
 });
+
+$("#results-page").load('results-page.html', function() {
+  $("#right-answers").html("Right Answers: " + localStorage.getItem("answer-right"));
+})
 
 // $('#myForm input').on('change', function() {
 //    alert($('input[name=radioName]:checked', '#myForm').val()); 
@@ -62,6 +69,6 @@ $("#done").click(function() {
 
 
 
-}) // document ready
+}); // document ready
 
 
