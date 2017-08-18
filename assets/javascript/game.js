@@ -11,18 +11,20 @@ var skipped = 0;
 
 function correct() {
   rightAnswers++;
-  localStorage.setItem("answer-right", rightAnswers);
+  sessionStorage.setItem("answer-right", rightAnswers);
   // $("#right-answers").text(rightAnswers);
 }
 
 function wrong() {
   wrongAnswers++;
-  $("#wrong-answers").text(wrongAnswers);
+  sessionStorage.setItem("answer-wrong", wrongAnswers);
+  // $("#wrong-answers").text(wrongAnswers);
 }
 
 function notAnswered() {
   skipped++;
-  $("#not-answered").text(notAnswered);
+  sessionStorage.setItem("no-answer", skipped)
+  // $("#not-answered").text(notAnswered);
 }
 
 function getScore() {
@@ -57,8 +59,20 @@ $("#done").click(function() {
 });
 
 $("#results-page").load('results-page.html', function() {
-  $("#right-answers").html("Right Answers: " + localStorage.getItem("answer-right"));
+  $("#right-answers").html("Right Answers: " + sessionStorage.getItem("answer-right"));
+  $("#wrong-answers").html("Wrong Answers: " + sessionStorage.getItem("answer-wrong"));
+  $("#no-answer").html("Not Answered: " + sessionStorage.getItem("no-answer"));
+  //Load in wrong and not answered here
 })
+
+
+// Try again button needs to blow away all the session storage 
+
+
+
+
+
+
 
 // $('#myForm input').on('change', function() {
 //    alert($('input[name=radioName]:checked', '#myForm').val()); 
