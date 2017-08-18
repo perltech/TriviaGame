@@ -39,17 +39,19 @@ function getScore() {
     }
     else {
       notAnswered();
-      console.log(skipped + "no answer")
+      console.log(skipped + "no answer");
     }
   }
 };
 
 
 
-// $("#done").click(function() {
-//   getScore();
-//   //Clear Interval
-// });
+$("#done").click(function() {
+  getScore();
+  localStorage.setItem(rightAnswers, wrongAnswers, notAnswered);
+  window.location.href='results-page.html';
+  //Clear Interval
+});
 
 // $('#myForm input').on('change', function() {
 //    alert($('input[name=radioName]:checked', '#myForm').val()); 
