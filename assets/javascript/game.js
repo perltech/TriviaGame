@@ -27,8 +27,14 @@ function notAnswered() {
   // $("#not-answered").text(notAnswered);
 }
 
+
+
+// I think this needs to change to a switch switch($("input[type=radio]:checked", "#myForm").val())
+// case: "rightAnswer" {
+//      correct();
+//      break;}
 function getScore() {
-  for(i = 0; i < 10; i++) {
+  for(i = 0; i < 2; i++) {
     
     // if ($("[input[type=radio]").checked === "rightAnswer")
     // if ($("label[input[type=radio]]").val("rightAnswer")
@@ -36,16 +42,19 @@ function getScore() {
       correct();
       // localStorage.setItem("answer-right", rightAnswers);
       console.log(rightAnswers + "right");
+      break;
     }
     else if ($("input[type=radio]:checked", "#myForm").val() === "wrongAnswer") {
       wrong();
       // Wrong answers need to be divided by number of extra wrong answers per loop, probably 2 or 3
       // Can this be accomplished as an algorithm using %?
       console.log(wrongAnswers + "wrong");
+      break;
     }
     else {
       notAnswered();
       console.log(skipped + "no answer");
+      break;
     }
   }
 };
@@ -64,6 +73,9 @@ $("#results-page").load('results-page.html', function() {
   $("#no-answer").html("Not Answered: " + sessionStorage.getItem("no-answer"));
   //Load in wrong and not answered here
 })
+
+  // Could add catch for null value being returned by local storage
+  // if(sessionStorage.getItem("answer-right")) {$("#right-answers").html("Right Answers: " + 0)}
 
 
 // Try again button needs to blow away all the session storage 
