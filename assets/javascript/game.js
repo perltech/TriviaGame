@@ -32,19 +32,22 @@ var count = 120;
 
 var counter = setInterval(timer, 1000); //1000 will  run it every 1 second
 
+// Timer isn't showing up. I'm not really sure why, I have a span for it in the quiz-page.
+// I also tried running the loop to aggregate the score up here instead of at the bottom.
+
 function timer()
 {
   count -= 1;
   if (count <= 0) {
      clearInterval(counter);
-     //counter ended, do something here
-    for(i = 0; i < questions.length; i++) {
-    getScore(questions[i]);
+    // for(i = 0; i < questions.length; i++) {
+    // getScore(questions[i]);
+    
+    // };
     return;
-    };
-    $("#timer").html(count + ": secounds left");
      
   }
+  $("#timer").html(count + ": secounds left");
 }
 
 
@@ -109,13 +112,19 @@ $("#quiz-page").load('quiz-page.html', function() {
 
 $("#done").click(function() {
 
+
+  // This is supposed to iterate through an array that targets the id of questions, but I couldn't get it working.
+  // It never moves outsied of the first answers, value. I don't understand why. It does however store into the session storage, correctly.
   for(i = 0; i < questions.length; i++) {
     getScore(questions[i]);
   };
 
   window.location.href='results-page.html';
   //Clear Interval
+  clearInterval(counter);
 });
+
+
 
 $("#results-page").load('results-page.html', function() {
   $("#right-answers").html("Right Answers: " + sessionStorage.getItem("answer-right"));
